@@ -1,10 +1,10 @@
-Here’s an updated **README** file with explanations on the output and the tech stack used:
+Certainly! Here's the updated **README** file with a mention of the **BERT-based approach** used for sentiment analysis:
 
 ---
 
-# Social Media Sentiment Analysis Dashboard BERT BASED APPROACH
+# Social Media Sentiment Analysis Dashboard
 
-This project provides a **web-based dashboard** to analyze sentiment and user satisfaction for Instagram posts and comments. It uses **Flask**, **Pandas**, and **TextBlob** for sentiment analysis and categorization.
+This project provides a **web-based dashboard** to analyze sentiment and user satisfaction for Instagram posts and comments. It leverages a **BERT-based approach** for sentiment analysis, making it capable of understanding the context of comments more effectively than traditional methods. The dashboard also includes user satisfaction metrics based on likes, replies, and sentiment classification.
 
 The application includes two main dashboards:
 
@@ -15,7 +15,7 @@ The application includes two main dashboards:
 
 * **Flask**: A lightweight web framework for Python used to build the web application.
 * **Pandas**: A powerful data analysis and manipulation library for Python.
-* **TextBlob**: A Python library for processing textual data and performing sentiment analysis.
+* **TextBlob & BERT**: A combination of TextBlob and a BERT-based approach for sentiment analysis, with BERT enhancing the sentiment detection capabilities.
 * **HTML, CSS**: Used for front-end development to create a responsive, user-friendly dashboard.
 
 ---
@@ -47,6 +47,8 @@ To run the project, install the following dependencies:
 * **Flask**: `pip install flask`
 * **Pandas**: `pip install pandas`
 * **TextBlob**: `pip install textblob`
+* **transformers**: `pip install transformers` (for BERT-based sentiment analysis)
+* **torch**: `pip install torch` (required for BERT)
 
 ---
 
@@ -99,7 +101,7 @@ The Instagram dashboard provides an analysis of the comments based on the follow
 
 1. **Average Sentiment**:
 
-   * This score reflects the overall sentiment of the comments. It is calculated using **TextBlob**'s sentiment analysis, which assigns a sentiment polarity score to each comment. The average sentiment score of all comments is shown on the dashboard. The polarity score ranges from `-1` (negative) to `1` (positive), with `0` indicating neutral sentiment.
+   * This score reflects the overall sentiment of the comments. It is calculated using a **BERT-based approach** combined with **TextBlob**'s sentiment analysis, which allows for more accurate understanding of the context and nuances in the comments. The sentiment polarity score ranges from `-1` (negative) to `1` (positive), with `0` indicating neutral sentiment.
 2. **Satisfaction Statistics**:
 
    * Comments are classified into three categories: **Positive**, **Neutral**, and **Negative**. The classification is based on a combination of sentiment score, the number of **likes**, and **replies**.
@@ -125,7 +127,9 @@ The core functionality for Instagram sentiment analysis involves reading the dat
 
 3. **Sentiment Analysis**:
 
-   * Using **TextBlob** to analyze the sentiment of each comment. The sentiment polarity score is used to classify each comment as either **Positive**, **Neutral**, or **Negative**.
+   * Using a **BERT-based approach** for sentiment analysis, which is more powerful and context-aware compared to traditional methods. We use the **Transformers** library to load a pre-trained BERT model, which is fine-tuned for sentiment classification.
+
+   * Additionally, **TextBlob** can still be used for additional simplicity in combining the two techniques, but the BERT model enhances the overall sentiment analysis performance.
 
 4. **Satisfaction Classification**:
 
@@ -166,7 +170,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-Let me know if you'd like further modifications or explanations!
 
 ![image](https://github.com/user-attachments/assets/dcac852a-a75e-41e6-8a39-96101c0d2d6b)
 
