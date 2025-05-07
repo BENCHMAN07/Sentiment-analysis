@@ -1,8 +1,6 @@
-Certainly! Here's the updated **README** file with a mention of the **BERT-based approach** used for sentiment analysis:
+------------------------------
 
----
-
-# Social Media Sentiment Analysis Dashboard
+# Social Media Sentiment Analysis Dashboard BERT Based Approach
 
 This project provides a **web-based dashboard** to analyze sentiment and user satisfaction for Instagram posts and comments. It leverages a **BERT-based approach** for sentiment analysis, making it capable of understanding the context of comments more effectively than traditional methods. The dashboard also includes user satisfaction metrics based on likes, replies, and sentiment classification.
 
