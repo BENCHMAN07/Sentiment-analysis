@@ -1,26 +1,22 @@
-# Sentiment-analysis
-Sentiment Analysis Instagram using a Benchmark Dataset from Github
-
-Here's a sample **README** file for your project, explaining the implementation of the Instagram CSV part:
+Here’s an updated **README** file with explanations on the output and the tech stack used:
 
 ---
 
 # Social Media Sentiment Analysis Dashboard
 
-This project provides a web-based dashboard to analyze sentiment and user satisfaction for Instagram posts and comments. The project uses **Flask**, **Pandas**, and **TextBlob** to analyze and categorize user comments based on sentiment, likes, and replies.
+This project provides a **web-based dashboard** to analyze sentiment and user satisfaction for Instagram posts and comments. It uses **Flask**, **Pandas**, and **TextBlob** for sentiment analysis and categorization.
 
-## Project Overview
+The application includes two main dashboards:
 
-The dashboard includes two main sections:
+1. **Instagram QoS Dashboard**: Analyzes Instagram comments and displays average sentiment and user satisfaction statistics.
+2. **Twitter QoS Dashboard** (planned for future implementation): Will display similar metrics for Twitter comments.
 
-1. **Instagram QoS Dashboard**: This section analyzes Instagram comments and displays average sentiment and user satisfaction statistics.
-2. **Twitter QoS Dashboard**: This section (yet to be implemented for Twitter dataset) will display similar metrics for Twitter comments.
+### **Tech Stack**
 
-### Technologies Used:
-
-* **Flask**: Web framework for Python to build the application.
-* **Pandas**: Data manipulation and analysis.
-* **TextBlob**: Sentiment analysis tool.
+* **Flask**: A lightweight web framework for Python used to build the web application.
+* **Pandas**: A powerful data analysis and manipulation library for Python.
+* **TextBlob**: A Python library for processing textual data and performing sentiment analysis.
+* **HTML, CSS**: Used for front-end development to create a responsive, user-friendly dashboard.
 
 ---
 
@@ -35,7 +31,7 @@ The project is organized in the following folder structure:
 ├── /analysis.py           # Sentiment analysis and satisfaction classification logic
 ├── /templates/
 │   ├── dashboard.html     # Instagram dashboard HTML template
-│   └── twitter_dashboard.html  # Twitter dashboard HTML template
+│   └── twitter_dashboard.html  # Twitter dashboard HTML template (future implementation)
 ├── /static/
 │   └── style.css          # Custom CSS for dashboard styling
 └── /data/
@@ -46,7 +42,7 @@ The project is organized in the following folder structure:
 
 ## Requirements
 
-To run the project, you will need the following libraries installed:
+To run the project, install the following dependencies:
 
 * **Flask**: `pip install flask`
 * **Pandas**: `pip install pandas`
@@ -57,18 +53,16 @@ To run the project, you will need the following libraries installed:
 ## Setup
 
 1. Clone or download the project files.
-
 2. Install the required dependencies:
 
    ```bash
    pip install -r requirements.txt
    ```
+3. Ensure you have the dataset file:
 
-3. Make sure you have the following dataset:
+   * `Instagram-datasets.csv`: This file contains Instagram comments data, located in the `data/` folder.
 
-   * `Instagram-datasets.csv`: This file contains Instagram comments data and is located in the `data/` directory.
-
-   **Instagram Dataset Structure**:
+   **Instagram Dataset Columns**:
 
    * **comment**: The comment text.
    * **likes\_number**: The number of likes on the comment.
@@ -81,55 +75,65 @@ To run the project, you will need the following libraries installed:
 ## Running the Application
 
 1. Open a terminal and navigate to the project directory.
-
 2. Run the Flask application:
 
    ```bash
    python app.py
    ```
-
-3. Open your browser and go to:
+3. Open your browser and visit:
 
    ```
    http://localhost:5000/
    ```
 
-   This will display the **Instagram QoS Dashboard**, which shows:
+   This will load the **Instagram QoS Dashboard**, displaying:
 
-   * **Average Sentiment**: An average sentiment score of all Instagram comments.
+   * **Average Sentiment**: The average sentiment score calculated for all Instagram comments.
    * **Satisfaction Statistics**: A breakdown of comments classified as 'Positive', 'Neutral', or 'Negative' based on sentiment and engagement (likes and replies).
 
 ---
 
-## Key Features
+## Explanation of the Output
 
-1. **Instagram Sentiment Analysis**:
+The Instagram dashboard provides an analysis of the comments based on the following metrics:
 
-   * The app reads the `Instagram-datasets.csv` file and performs sentiment analysis on the comments using **TextBlob**.
-   * Sentiment is classified into categories such as 'Positive', 'Neutral', and 'Negative'.
+1. **Average Sentiment**:
 
-2. **Satisfaction Classification**:
+   * This score reflects the overall sentiment of the comments. It is calculated using **TextBlob**'s sentiment analysis, which assigns a sentiment polarity score to each comment. The average sentiment score of all comments is shown on the dashboard. The polarity score ranges from `-1` (negative) to `1` (positive), with `0` indicating neutral sentiment.
+2. **Satisfaction Statistics**:
 
-   * The app classifies comments based on the number of likes, replies, and sentiment. The classification is performed in the `classify_satisfaction` function.
+   * Comments are classified into three categories: **Positive**, **Neutral**, and **Negative**. The classification is based on a combination of sentiment score, the number of **likes**, and **replies**.
 
-3. **Dashboard Display**:
+     * **Positive**: Comments with high sentiment scores and a relatively higher number of likes and replies.
+     * **Neutral**: Comments with a sentiment score close to `0`, indicating neutral sentiment.
+     * **Negative**: Comments with low sentiment scores and lower engagement.
 
-   * Displays a dashboard with visual insights, including:
-
-     * Average sentiment score for all comments.
-     * A count of comments in each satisfaction category.
+   The dashboard shows the count of comments falling into each satisfaction category.
 
 ---
 
 ## Instagram CSV Implementation
 
-The core of the Instagram sentiment analysis starts by reading the dataset from the CSV file located at `data/Instagram-datasets.csv`. The script:
+The core functionality for Instagram sentiment analysis involves reading the dataset from the CSV file `Instagram-datasets.csv`. The steps involved are:
 
-1. **Reads the CSV** using `pandas`.
-2. **Renames Columns** to match the format used in the application (e.g., `comment` -> `Comment`, `likes_number` -> `Likes`).
-3. **Drops rows with missing comments** to ensure the analysis is accurate.
-4. **Applies Sentiment Analysis** on the `Comment` column using **TextBlob**.
-5. **Classifies User Satisfaction** based on the sentiment score, likes, and replies.
+1. **Reading the CSV File**: The file is read using **Pandas** to load the dataset into a DataFrame.
+
+2. **Data Cleaning**:
+
+   * Renaming columns for consistency.
+   * Dropping rows with missing comments to ensure accuracy in analysis.
+
+3. **Sentiment Analysis**:
+
+   * Using **TextBlob** to analyze the sentiment of each comment. The sentiment polarity score is used to classify each comment as either **Positive**, **Neutral**, or **Negative**.
+
+4. **Satisfaction Classification**:
+
+   * Based on the sentiment score, number of likes, and replies, comments are classified into **Positive**, **Neutral**, or **Negative** categories.
+
+5. **Displaying Results**:
+
+   * The calculated **average sentiment** and **satisfaction statistics** are passed to the `dashboard.html` template, which renders the results in the web interface.
 
 ---
 
@@ -145,17 +149,25 @@ The `Instagram-datasets.csv` file should have the following columns:
 
 ---
 
-## Next Steps
+## Future Implementation
 
-1. **Twitter QoS Dashboard**: Implement functionality for analyzing Twitter data using a similar structure.
-2. **Visualizations**: Enhance the dashboard with graphs and charts for better visual representation.
+1. **Twitter QoS Dashboard**:
+
+   * The logic for Twitter analysis will be similar to Instagram, but with Twitter-specific datasets (e.g., likes, retweets, and replies).
+2. **Data Visualizations**:
+
+   * Enhance the dashboard by adding **charts** and **graphs** (e.g., pie charts for satisfaction breakdown, bar charts for sentiment distribution).
 
 ---
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
 ---
 
+Let me know if you'd like further modifications or explanations!
+
 ![image](https://github.com/user-attachments/assets/dcac852a-a75e-41e6-8a39-96101c0d2d6b)
+
+
