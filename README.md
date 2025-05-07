@@ -157,3 +157,5 @@ The `Instagram-datasets.csv` file should have the following columns:
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
+
+![image](https://github.com/user-attachments/assets/dcac852a-a75e-41e6-8a39-96101c0d2d6b)
