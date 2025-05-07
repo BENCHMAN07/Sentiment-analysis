@@ -2,7 +2,7 @@ Here’s an updated **README** file with explanations on the output and the tech
 
 ---
 
-# Social Media Sentiment Analysis Dashboard
+# Social Media Sentiment Analysis Dashboard BERT BASED APPROACH
 
 This project provides a **web-based dashboard** to analyze sentiment and user satisfaction for Instagram posts and comments. It uses **Flask**, **Pandas**, and **TextBlob** for sentiment analysis and categorization.
 
